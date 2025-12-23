@@ -6,11 +6,11 @@
     <title>White Hat Coffee | Customer Portal</title>
     <style>
         :root {
-            --brand-green: #0a2e2a; /* Deep Forest Green from your logo */
+            --brand-green: #0a2e2a;
             --accent-teal: #144d47;
             --gold: #d4a373;
             --white: #ffffff;
-            --glass: rgba(10, 46, 42, 0.7); /* Themed glass effect */
+            --glass: rgba(10, 46, 42, 0.75);
             --border: rgba(255, 255, 255, 0.15);
         }
 
@@ -18,7 +18,7 @@
             margin: 0;
             font-family: 'Inter', sans-serif;
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
-                        url('https://scontent.fmnl9-3.fna.fbcdn.net/v/t39.30808-6/487315554_122118313466794371_607240084685958445_n.jpg?_nc_cat=100&_nc_cb=99be929b-ad57045b&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFKgCFpP6gHr6CPKo8Hsnzay3oXWW7LY-_LehdZbstj711PkluFv92Xzffoz7uB33BQmNLMSjExA02h4velbMxL&_nc_ohc=0IV78qyuh8sQ7kNvwH9GmRj&_nc_oc=AdlsfToy9u7J6xQ1s1lw2rN15Vgzj8JWaGYwz8tszRF5j-kmYK-_XKxlwTVZZ8itjLM&_nc_zt=23&_nc_ht=scontent.fmnl9-3.fna&_nc_gid=CLOji5xfdSYzpqix5NPFFA&oh=00_Afn0I2HenqCS4cYsHfnB8eHwJvoTik8bvD_hH8sZ5RnGWQ&oe=695083F9');
+                        url('https://scontent.fmnl9-3.fna.fbcdn.net/v/t39.30808-6/487315554_122118313466794371_607240084685958445_n.jpg?_nc_cat=100&_nc_cb=99be929b-ad57045b&ccb=1-7&_nc_sid=cc71e4&oh=00_Afn0I2HenqCS4cYsHfnB8eHwJvoTik8bvD_hH8sZ5RnGWQ&oe=695083F9');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -29,26 +29,14 @@
             overflow: hidden;
         }
 
-        /* Floating Animation for Cards */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
 
         header { padding: 20px; text-align: center; }
-        .logo-img { 
-            width: 100px; 
-            height: 100px; 
-            border-radius: 50%; 
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 20px rgba(212, 163, 115, 0.3);
-            margin-bottom: 10px;
-        }
+        .logo-img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--gold); box-shadow: 0 0 20px rgba(212, 163, 115, 0.3); margin-bottom: 10px; }
         .logo-box h1 { margin: 0; font-size: 1.4rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 900; }
         .logo-box span { color: var(--gold); }
 
-        .container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; overflow: hidden; }
 
         .card {
             background: var(--glass);
@@ -66,71 +54,62 @@
         input, textarea {
             width: 100%; padding: 16px; margin-bottom: 20px;
             background: rgba(0,0,0,0.5); border: 1px solid var(--border);
-            border-radius: 12px; color: white; box-sizing: border-box;
-            font-size: 1rem; outline: none; transition: 0.3s;
+            border-radius: 12px; color: white; box-sizing: border-box; font-size: 1rem; outline: none;
         }
-        input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(212, 163, 115, 0.2); }
+        input:focus { border-color: var(--gold); }
 
         .rating-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
-        .bean {
-            font-size: 2.2rem; cursor: pointer; filter: grayscale(1); 
-            opacity: 0.3; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+        .bean { font-size: 2.2rem; cursor: pointer; filter: grayscale(1); opacity: 0.3; transition: 0.4s; }
         .bean.active { filter: grayscale(0); opacity: 1; transform: scale(1.3); text-shadow: 0 0 15px var(--gold); }
 
         .btn {
             width: 100%; padding: 16px; 
             background: linear-gradient(135deg, var(--gold), #b3865a);
-            border: none; border-radius: 12px; color: #000;
-            font-weight: 800; cursor: pointer; transition: 0.4s;
-            text-transform: uppercase; letter-spacing: 1px;
+            border: none; border-radius: 12px; color: #000; font-weight: 800; cursor: pointer; text-transform: uppercase;
         }
-        .btn:hover { transform: scale(1.02); filter: brightness(1.1); }
-        .btn:disabled { background: #333; color: #666; cursor: not-allowed; transform: none; }
+        .btn:disabled { background: #333; color: #666; cursor: not-allowed; }
 
-        /* Animation Pulse */
-        @keyframes pulse-bean {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.4); opacity: 0.6; }
-            100% { transform: scale(1); opacity: 1; }
+        .loading-bean { display: none; animation: pulse 0.8s infinite; font-size: 1.5rem; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.4); } }
+
+        /* Admin Page Specifics */
+        .admin-box { max-width: 900px; height: 85vh; animation: none; display: flex; flex-direction: column; }
+        .stats-row { display: flex; gap: 15px; margin-bottom: 20px; flex-shrink: 0; }
+        .stat-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; flex: 1; text-align: center; }
+        .stat-card h3 { color: var(--gold); margin: 5px 0 0; font-size: 1.8rem; }
+
+        /* Scroll Area Design */
+        .log-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) transparent;
         }
-        .loading-bean { display: none; animation: pulse-bean 0.8s infinite; font-size: 1.5rem; }
+        .log-container::-webkit-scrollbar { width: 6px; }
+        .log-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
-        /* Thank You View */
+        table { width: 100%; border-collapse: collapse; }
+        thead { position: sticky; top: 0; background: var(--brand-green); z-index: 10; }
+        th { color: var(--gold); text-align: left; padding: 15px; font-size: 0.8rem; text-transform: uppercase; border-bottom: 2px solid var(--gold); }
+        td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; vertical-align: top; }
+
+        .hidden { display: none !important; }
         #thank-you-view { display: none; }
-        .success-circle { 
-            width: 80px; height: 80px; border: 4px solid var(--gold); 
-            border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; font-size: 3rem; color: var(--gold);
-            margin: 0 auto 20px; 
-            animation: pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes pop-in { 0% { transform: scale(0); } 100% { transform: scale(1); } }
-
-        /* Admin Layout */
-        .admin-box { max-width: 850px; animation: none; }
-        .stat-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; flex: 1; }
-        .stat-card h3 { color: var(--gold); margin: 5px 0 0; }
-        
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th { color: var(--gold); text-align: left; padding: 12px; font-size: 0.8rem; border-bottom: 1px solid var(--border); }
-        td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
-
-        .hidden { display: none; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-box">
-        <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t39.30808-6/536275766_122156552030794371_4811627826598428867_n.jpg?_nc_cat=101&_nc_cb=99be929b-ad57045b&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHKCvcTUqoeJCHG69w4RbztIz8txUqd4kIjPy3FSp3iQmmIeXvA2Dw39UzvXwxdLrwWGucQBjgtCB3g6fK1ur_3&_nc_ohc=Fm31isbdX38Q7kNvwH79DSq&_nc_oc=AdlrusCgHGJZIVzqYKU_UfCQzGWL-gLkcjVSBiR29jypvVy28XeubpETmzH9LWC8qBA&_nc_zt=23&_nc_ht=scontent.fmnl9-2.fna&_nc_gid=9lJm55WtIvT1cgqwg9wApA&oh=00_AfnoNILrgFFehV4i4OgTdgpndVk3VgCQYqGc4t7nv74YZg&oe=6950720D" alt="White Hat Coffee" class="logo-img">
+        <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t39.30808-6/536275766_122156552030794371_4811627826598428867_n.jpg?_nc_cat=101&_nc_cb=99be929b-ad57045b&ccb=1-7&_nc_sid=6ee11a&oh=00_AfnoNILrgFFehV4i4OgTdgpndVk3VgCQYqGc4t7nv74YZg&oe=6950720D" alt="Logo" class="logo-img">
         <h1>White<span>Hat</span> Coffee</h1>
     </div>
 </header>
 
 <div class="container">
-    
     <div id="login-card" class="card">
         <h2 style="font-weight: 300;">Member <strong>Login</strong></h2>
         <input type="text" id="userName" placeholder="What's your name?">
@@ -139,8 +118,7 @@
 
     <div id="feedback-card" class="card hidden">
         <h2 style="margin:0">Rate the Brew</h2>
-        <p style="opacity: 0.5; margin-bottom: 25px; font-size: 0.9rem;">Mandatory quality review</p>
-        
+        <p style="opacity: 0.5; margin-bottom: 25px; font-size: 0.9rem;">Mandatory review</p>
         <div class="rating-row">
             <span class="bean" onclick="app.setRating(1)">☕</span>
             <span class="bean" onclick="app.setRating(2)">☕</span>
@@ -148,9 +126,7 @@
             <span class="bean" onclick="app.setRating(4)">☕</span>
             <span class="bean" onclick="app.setRating(5)">☕</span>
         </div>
-
-        <textarea id="userComment" rows="4" placeholder="How was your experience today?" oninput="app.validate()"></textarea>
-        
+        <textarea id="userComment" rows="4" placeholder="How was your experience?" oninput="app.validate()"></textarea>
         <button class="btn" id="submitBtn" onclick="app.submit()" disabled>
             <span id="btnText">Submit Feedback</span>
             <span id="btnLoading" class="loading-bean">☕</span>
@@ -158,28 +134,26 @@
     </div>
 
     <div id="thank-you-view" class="card">
-        <div class="success-circle">✓</div>
-        <h2 style="margin:0">Thank You!</h2>
-        <p id="thanks-name" style="color: var(--gold); font-weight: bold; margin: 10px 0;"></p>
-        <p style="opacity: 0.6; font-size: 0.9rem;">Your response has been logged successfully.</p>
-        <button class="btn" style="margin-top: 25px; background: transparent; border: 1px solid var(--gold); color: var(--gold);" onclick="location.reload()">Return Home</button>
+        <div style="font-size: 4rem; color: var(--gold); margin-bottom: 15px;">✓</div>
+        <h2>Thank You!</h2>
+        <p id="thanks-name" style="color: var(--gold); font-weight: bold;"></p>
+        <p style="opacity: 0.6; font-size: 0.8rem;">Feedback logged successfully.</p>
+        <button class="btn" style="margin-top: 20px; background: transparent; border: 1px solid var(--gold); color: var(--gold);" onclick="location.reload()">Back</button>
     </div>
 
     <div id="admin-card" class="card admin-box hidden">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-shrink: 0;">
             <h2 style="margin:0">Executive Logs</h2>
-            <button onclick="location.reload()" style="background:none; border:1px solid var(--gold); color:var(--gold); border-radius:8px; padding:5px 15px; cursor:pointer;">Logout</button>
+            <button onclick="location.reload()" style="background:none; border:1px solid var(--gold); color:var(--gold); border-radius:8px; padding:8px 20px; cursor:pointer;">Logout</button>
         </div>
-
-        <div style="display:flex; gap: 15px; margin-bottom: 20px;">
+        <div class="stats-row">
             <div class="stat-card"><p>Total Logs</p><h3 id="stat-total">0</h3></div>
-            <div class="stat-card"><p>Avg Score</p><h3 id="stat-avg">0.0</h3></div>
+            <div class="stat-card"><p>Average</p><h3 id="stat-avg">0.0</h3></div>
         </div>
-
-        <div style="max-height: 250px; overflow-y: auto; background: rgba(0,0,0,0.3); border-radius: 15px;">
+        <div class="log-container">
             <table>
                 <thead>
-                    <tr><th>Name</th><th>Rating</th><th>Comment</th><th>Time</th></tr>
+                    <tr><th>Name</th><th>Rating</th><th>Comment</th><th>Date & Time</th></tr>
                 </thead>
                 <tbody id="log-table"></tbody>
             </table>
@@ -189,28 +163,20 @@
 
 <script>
     const app = {
-        rating: 0,
-        user: "",
+        rating: 0, user: "",
         logs: JSON.parse(sessionStorage.getItem('whc_logs')) || [],
 
         login: function() {
             this.user = document.getElementById('userName').value.trim();
-            if(!this.user) return alert("Enter your name to continue.");
-
+            if(!this.user) return alert("Enter your name.");
             document.getElementById('login-card').classList.add('hidden');
-
-            if(this.user === 'GwynWhiteHatAdmin') {
-                this.showAdmin();
-            } else {
-                document.getElementById('feedback-card').classList.remove('hidden');
-            }
+            if(this.user === 'GwynWhiteHatAdmin') this.showAdmin();
+            else document.getElementById('feedback-card').classList.remove('hidden');
         },
 
         setRating: function(val) {
             this.rating = val;
-            document.querySelectorAll('.bean').forEach((b, i) => {
-                b.classList.toggle('active', i < val);
-            });
+            document.querySelectorAll('.bean').forEach((b, i) => b.classList.toggle('active', i < val));
             this.validate();
         },
 
@@ -222,23 +188,23 @@
         submit: function() {
             document.getElementById('btnText').style.display = 'none';
             document.getElementById('btnLoading').style.display = 'inline-block';
-            document.getElementById('submitBtn').disabled = true;
-
-            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            const now = new Date();
+            const dateStr = now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
             setTimeout(() => {
                 this.logs.push({ 
                     user: this.user, 
                     rating: this.rating, 
                     comment: document.getElementById('userComment').value.trim(),
-                    time: time
+                    timestamp: ${dateStr} | ${timeStr}
                 });
                 sessionStorage.setItem('whc_logs', JSON.stringify(this.logs));
-                
                 document.getElementById('feedback-card').classList.add('hidden');
                 document.getElementById('thank-you-view').style.display = 'block';
                 document.getElementById('thanks-name').innerText = "Cheers, " + this.user + "!";
-            }, 2000);
+            }, 1500);
         },
 
         showAdmin: function() {
@@ -246,20 +212,18 @@
             const table = document.getElementById('log-table');
             const total = this.logs.length;
             let sum = 0;
-
             document.getElementById('stat-total').innerText = total;
             table.innerHTML = "";
-
             if(total === 0) {
-                table.innerHTML = "<tr><td colspan='4' style='text-align:center; padding:30px; opacity:0.5;'>No submissions yet.</td></tr>";
+                table.innerHTML = "<tr><td colspan='4' style='text-align:center; padding:50px; opacity:0.5;'>No submissions yet.</td></tr>";
             } else {
                 [...this.logs].reverse().forEach(log => {
                     sum += log.rating;
                     table.innerHTML += `<tr>
                         <td style="color:var(--gold); font-weight:bold;">${log.user}</td>
-                        <td>${"☕".repeat(log.rating)}</td>
-                        <td style="opacity:0.8">${log.comment}</td>
-                        <td style="font-size: 0.75rem; opacity: 0.4;">${log.time}</td>
+                        <td style="letter-spacing:2px;">${"☕".repeat(log.rating)}</td>
+                        <td style="opacity:0.8; line-height:1.4;">${log.comment}</td>
+                        <td style="font-size: 0.75rem; opacity: 0.4;">${log.timestamp}</td>
                     </tr>`;
                 });
                 document.getElementById('stat-avg').innerText = (sum / total).toFixed(1);
@@ -268,5 +232,4 @@
     };
 </script>
 </body>
-
 </html>
