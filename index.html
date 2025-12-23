@@ -78,7 +78,6 @@
         .stat-card { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 15px; flex: 1; text-align: center; border: 1px solid var(--border); }
         .stat-card h3 { color: var(--gold); margin: 5px 0 0; font-size: 1.5rem; }
 
-        /* Scroll Area Design */
         .log-container {
             flex-grow: 1;
             overflow-y: auto;
@@ -89,7 +88,6 @@
             scrollbar-color: var(--gold) transparent;
         }
         
-        /* Modern Scrollbar for Chrome/Safari */
         .log-container::-webkit-scrollbar { width: 8px; }
         .log-container::-webkit-scrollbar-track { background: transparent; }
         .log-container::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
@@ -207,7 +205,7 @@
                 user: this.user, 
                 rating: this.rating, 
                 comment: document.getElementById('userComment').value.trim(),
-                timestamp: ${dateStr} | ${timeStr}
+                timestamp: `${dateStr} | ${timeStr}` // Fixed using backticks
             };
 
             this.logs.push(newLog);
@@ -229,8 +227,8 @@
             
             if(total === 0) {
                 table.innerHTML = "<tr><td colspan='4' style='text-align:center; padding:50px; opacity:0.5;'>No submissions yet.</td></tr>";
+                document.getElementById('stat-avg').innerText = "0.0";
             } else {
-                // Reverse to show newest at top
                 [...this.logs].reverse().forEach(log => {
                     sum += log.rating;
                     table.innerHTML += `<tr>
