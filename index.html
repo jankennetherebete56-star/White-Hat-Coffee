@@ -347,7 +347,11 @@
                     const data = await res.json();
                     
                     const total = data.length;
-                    const avg = total > 0 ? (data.reduce((a, b) => a + b.rating, 0) / total).toFixed(1) : "0.0";
+
+                    // --- FIXED AVERAGE CALCULATION ---
+                    // We use Number() to ensure ratings aren't treated as text, 
+                    // and start the sum at 0 to avoid errors.
+                    const avg = total > 0 ? (data.reduce((acc, item) => acc + Number(item.rating), 0) / total).toFixed(1) : "0.0";
 
                     document.getElementById('stat-total-logs').innerText = total;
                     document.getElementById('stat-avg-rating').innerText = avg + " ☕";
