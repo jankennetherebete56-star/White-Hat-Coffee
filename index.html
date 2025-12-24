@@ -106,37 +106,7 @@
             text-align: center; 
         }
         .image-box { flex: 1; background-size: cover; background-position: center; filter: brightness(0.6); }
-        
         .bg-dark-green { background-color: var(--dark-green); }
-        .bg-accent-green { background-color: var(--accent-green); }
-        
-        .about-text { font-size: 1.1rem; line-height: 1.8; max-width: 500px; margin-bottom: 30px; font-weight: 400; color: #e0e0e0; }
-        .quote-text { font-size: 2.5rem; font-weight: 900; line-height: 1.2; text-transform: uppercase; color: var(--gold); letter-spacing: -1px; }
-        
-        .social-footer { margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; width: 100%; max-width: 300px; }
-        .social-title { font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 15px; color: var(--gold); }
-        .social-item { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; font-size: 0.85rem; opacity: 0.8; }
-
-        /* --- AUTH / FEEDBACK / ADMIN --- */
-        #auth-view { background-color: var(--brand-green); height: 100vh; display: flex; justify-content: center; align-items: center; }
-        .login-card { text-align: center; width: 100%; max-width: 450px; padding: 40px; background: var(--dark-green); border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
-        .login-card h1 { font-size: 1.6rem; font-weight: 900; margin-bottom: 20px; letter-spacing: 1px; color: var(--gold); }
-        .login-card input { width: 100%; padding: 15px; border: none; border-radius: 8px; background-color: var(--input-bg); margin-top: 10px; box-sizing: border-box; font-family: inherit; font-weight: 700; text-align: center; }
-        .btn-row { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
-        .ghost-btn { background: var(--gold); border: none; color: #000; padding: 15px 60px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; letter-spacing: 2px; text-transform: uppercase; }
-        .ghost-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3); }
-        
-        #feedback-view, #thank-you-view, #admin-view { 
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2070');
-            background-size: cover; min-height: 100vh; display: flex; justify-content: center; align-items: center; 
-        }
-        .portal-card { background: rgba(10, 77, 60, 0.95); backdrop-filter: blur(10px); padding: 40px; border-radius: 25px; width: 100%; max-width: 400px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
-        .rating-row { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-        .bean { font-size: 2.5rem; cursor: pointer; filter: grayscale(1); opacity: 0.3; transition: 0.3s; }
-        .bean.active { filter: grayscale(0); opacity: 1; text-shadow: 0 0 10px var(--gold); }
-        textarea { width: 100%; padding: 15px; border-radius: 10px; background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.2); resize: none; box-sizing: border-box; font-family: inherit; }
-        .submit-btn { width: 100%; padding: 15px; background: var(--gold); border: none; border-radius: 10px; margin-top: 15px; font-weight: 800; cursor: pointer; }
-        .submit-btn:disabled { opacity: 0.3; }
 
         /* Admin Specific */
         .admin-box { max-width: 900px; width: 95%; background: rgba(10, 77, 60, 0.98); padding: 30px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
@@ -148,6 +118,24 @@
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th { border-bottom: 2px solid var(--gold); padding: 10px; text-align: left; color: var(--gold); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
         td { padding: 15px 10px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
+
+        .sync-status { font-size: 0.65rem; color: var(--gold); opacity: 0.8; letter-spacing: 1px; }
+
+        /* Forms */
+        .login-card { text-align: center; width: 100%; max-width: 450px; padding: 40px; background: var(--dark-green); border-radius: 30px; }
+        .login-card input { width: 100%; padding: 15px; border-radius: 8px; border:none; margin-top: 10px; font-family: inherit; font-weight: 700; text-align: center;}
+        .ghost-btn { background: var(--gold); border: none; color: #000; padding: 15px 60px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;}
+        
+        #feedback-view, #thank-you-view, #admin-view { 
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover; min-height: 100vh; display: flex; justify-content: center; align-items: center; 
+        }
+        .portal-card { background: rgba(10, 77, 60, 0.95); padding: 40px; border-radius: 25px; width: 100%; max-width: 400px; text-align: center; }
+        .rating-row { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+        .bean { font-size: 2.5rem; cursor: pointer; filter: grayscale(1); opacity: 0.3; transition: 0.3s; }
+        .bean.active { filter: grayscale(0); opacity: 1; }
+        textarea { width: 100%; padding: 15px; border-radius: 10px; background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.2); resize: none; font-family: inherit; }
+        .submit-btn { width: 100%; padding: 15px; background: var(--gold); border: none; border-radius: 10px; margin-top: 15px; font-weight: 800; cursor: pointer; }
     </style>
 </head>
 <body onload="app.checkSession()">
@@ -164,43 +152,29 @@
                 <button id="nav-logout" class="hidden" onclick="app.logout()">Logout</button>
             </div>
         </nav>
-        
         <div class="hero-text">START YOUR DAY WITH WHITE HAT.</div>
-
         <div class="section-container">
             <div class="image-box" style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=1974');"></div>
             <div class="content-box bg-dark-green">
-                <h2 style="color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 900;">About Us</h2>
-                <p class="about-text">
-                    Freshly roasted, honestly sourced, and built for the daily grind. We provide the fuel you need to stay sharp and own your day. One cup, total clarity.
-                </p>
-                <div class="social-footer">
-                    <div class="social-title">STAY CONNECTED</div>
-                    <div class="social-item"><i class="fab fa-facebook-f"></i> @White Hat Coffee</div>
-                    <div class="social-item"><i class="fab fa-instagram"></i> @whitehatcoffeeph</div>
-                </div>
+                <h2 style="color: var(--gold); text-transform: uppercase; font-weight: 900;">About Us</h2>
+                <p style="max-width: 400px; opacity: 0.8; line-height: 1.6;">Freshly roasted and honest. We provide the fuel you need to stay sharp.</p>
             </div>
         </div>
     </div>
 
     <div id="auth-view" class="hidden">
         <div class="login-card">
-            <h1>JOIN THE WHITE HAT FEEDBACK</h1>
-            <div style="text-align: left; margin-top: 10px;">
-                <label style="font-weight: bold; font-size: 0.75rem; color: var(--gold); letter-spacing: 2px; display: block; text-align: center;">NAME</label>
-                <input type="text" id="authName" placeholder="Type your name...">
-            </div>
-            <div class="btn-row">
+            <h1>MEMBER ACCESS</h1>
+            <input type="text" id="authName" placeholder="Enter your name...">
+            <div style="margin-top: 20px;">
                 <button class="ghost-btn" onclick="app.signUp()">ENTER</button>
             </div>
-            <p style="font-size: 0.7rem; margin-top: 25px; opacity: 0.5; cursor: pointer;" onclick="showView('landing-view')">← RETURN TO HOME</p>
         </div>
     </div>
 
     <div id="feedback-view" class="hidden">
         <div class="portal-card">
-            <h2 id="welcome-user" style="margin:0; font-size: 1.5rem; color: var(--gold);"></h2>
-            <p style="opacity: 0.6; font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">white hat feedback</p>
+            <h2 id="welcome-user" style="color: var(--gold);"></h2>
             <div class="rating-row">
                 <span class="bean" onclick="app.setRating(1)">☕</span>
                 <span class="bean" onclick="app.setRating(2)">☕</span>
@@ -208,24 +182,24 @@
                 <span class="bean" onclick="app.setRating(4)">☕</span>
                 <span class="bean" onclick="app.setRating(5)">☕</span>
             </div>
-            <textarea id="userComment" rows="4" placeholder="Share your experience..." oninput="app.validate()"></textarea>
-            <button class="submit-btn" id="submitBtn" onclick="app.submitFeedback()" disabled>SUBMIT FEEDBACK</button>
+            <textarea id="userComment" rows="4" placeholder="Your feedback..." oninput="app.validate()"></textarea>
+            <button class="submit-btn" id="submitBtn" onclick="app.submitFeedback()" disabled>SUBMIT</button>
         </div>
     </div>
 
     <div id="thank-you-view" class="hidden">
         <div class="portal-card">
-            <div style="font-size: 4rem; color: var(--gold); margin-bottom: 10px;">✓</div>
-            <h2 style="margin:0; letter-spacing: 2px;">SUCCESS</h2>
-            <p id="thanks-name" style="color: var(--gold); font-weight: bold; margin: 15px 0;"></p>
-            <button class="submit-btn" style="background: transparent; border: 1px solid var(--gold); color: var(--gold);" onclick="app.logout()">END SESSION</button>
+            <h2 style="color: var(--gold);">THANK YOU!</h2>
+            <p id="thanks-name"></p>
+            <button class="submit-btn" onclick="app.logout()">CLOSE</button>
         </div>
     </div>
 
     <div id="admin-view" class="hidden">
         <div class="admin-box">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--gold); padding-bottom: 15px;">
-                <h2 style="color: var(--gold); margin:0; letter-spacing: 3px;">EXECUTIVE DASHBOARD</h2>
+                <h2 style="color: var(--gold); margin:0;">EXECUTIVE DASHBOARD</h2>
+                <div id="admin-sync-indicator" class="sync-status">SYNCING...</div>
                 <button class="ghost-btn" style="padding: 8px 20px; font-size: 0.7rem;" onclick="app.logout()">LOGOUT</button>
             </div>
 
@@ -257,16 +231,18 @@
     </div>
 
     <script>
+        // GOOGLE SCRIPT CONFIG
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwPpmL4EXmSe7ZoEepRNHaASEXXr38YLSFyM2ku6sK0t3fo4s1aWi68mTuS13fz-l8/exec";
+
         function showView(viewId) {
             document.querySelectorAll('body > div').forEach(div => div.classList.add('hidden'));
             document.getElementById(viewId).classList.remove('hidden');
-            window.scrollTo(0,0);
         }
 
         const app = {
             rating: 0,
             currentUser: localStorage.getItem('whc_session') || "",
-            feedbacks: JSON.parse(localStorage.getItem('whc_logs')) || [],
+            feedbacks: [],
 
             checkSession: function() {
                 if(this.currentUser) {
@@ -280,29 +256,16 @@
                 }
             },
 
-            goToFeedback: function() {
-                document.getElementById('welcome-user').innerText = "Hello, " + this.currentUser;
-                showView('feedback-view');
-            },
-
             signUp: function() {
                 const name = document.getElementById('authName').value.trim();
                 if(!name) return alert("Please enter your name.");
-                
                 this.currentUser = name;
                 localStorage.setItem('whc_session', name);
-                
-                if(name === 'GwynWhiteHatAdmin') {
-                    this.showAdmin();
-                } else {
-                    this.checkSession();
-                    this.goToFeedback();
+                this.checkSession();
+                if(name !== 'GwynWhiteHatAdmin') {
+                    document.getElementById('welcome-user').innerText = "Hello, " + name;
+                    showView('feedback-view');
                 }
-            },
-
-            logout: function() {
-                localStorage.removeItem('whc_session');
-                location.reload();
             },
 
             setRating: function(val) {
@@ -313,51 +276,81 @@
 
             validate: function() {
                 const comment = document.getElementById('userComment').value.trim();
-                document.getElementById('submitBtn').disabled = !(this.rating > 0 && comment.length >= 5);
+                document.getElementById('submitBtn').disabled = !(this.rating > 0 && comment.length >= 2);
             },
 
-            submitFeedback: function() {
+            submitFeedback: async function() {
+                const btn = document.getElementById('submitBtn');
+                btn.disabled = true;
+                btn.innerText = "SENDING...";
+
                 const now = new Date();
-                const timestamp = now.toLocaleDateString() + ' | ' + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                
-                const newLog = { 
-                    user: this.currentUser, 
-                    rating: this.rating, 
-                    comment: document.getElementById('userComment').value.trim(),
-                    time: timestamp
+                const log = {
+                    time: now.toLocaleDateString() + ' ' + now.toLocaleTimeString(),
+                    user: this.currentUser,
+                    rating: this.rating,
+                    comment: document.getElementById('userComment').value.trim()
                 };
-                
-                this.feedbacks.push(newLog);
-                localStorage.setItem('whc_logs', JSON.stringify(this.feedbacks));
-                document.getElementById('thanks-name').innerText = "CHEERS, " + this.currentUser;
-                showView('thank-you-view');
+
+                try {
+                    // Send to Google Sheets
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Essential for Google Apps Script
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(log)
+                    });
+
+                    document.getElementById('thanks-name').innerText = "CHEERS, " + this.currentUser;
+                    showView('thank-you-view');
+                } catch (e) {
+                    alert("Error saving feedback. Please try again.");
+                    btn.disabled = false;
+                    btn.innerText = "SUBMIT";
+                }
             },
 
-            showAdmin: function() {
+            showAdmin: async function() {
                 showView('admin-view');
                 const tbody = document.getElementById('admin-table-body');
+                const indicator = document.getElementById('admin-sync-indicator');
                 
-                // Calculate Stats
-                const totalLogs = this.feedbacks.length;
-                const avgRating = totalLogs > 0 
-                    ? (this.feedbacks.reduce((acc, curr) => acc + curr.rating, 0) / totalLogs).toFixed(1) 
-                    : "0.0";
+                indicator.innerText = "SYNCING LIVE DATA...";
 
-                document.getElementById('stat-total-logs').innerText = totalLogs;
-                document.getElementById('stat-avg-rating').innerText = avgRating + " ☕";
+                try {
+                    // Fetch from Google Sheets
+                    const response = await fetch(SCRIPT_URL);
+                    const data = await response.json();
+                    this.feedbacks = data; // Assuming the script returns an array of objects
+                } catch (e) {
+                    console.log("Cloud fetch failed, showing local fallback if any.");
+                    indicator.innerText = "OFFLINE MODE";
+                }
+
+                // Calculate Stats
+                const total = this.feedbacks.length;
+                const avg = total > 0 ? (this.feedbacks.reduce((a, b) => a + b.rating, 0) / total).toFixed(1) : "0.0";
+                
+                document.getElementById('stat-total-logs').innerText = total;
+                document.getElementById('stat-avg-rating').innerText = avg + " ☕";
+                indicator.innerText = "LIVE SYNCED";
 
                 // Render Table
-                tbody.innerHTML = totalLogs ? "" : "<tr><td colspan='4' style='text-align:center; opacity: 0.5; padding: 40px;'>No logs currently recorded.</td></tr>";
-                
+                tbody.innerHTML = total ? "" : "<tr><td colspan='4' style='text-align:center; padding:20px;'>No data found.</td></tr>";
                 [...this.feedbacks].reverse().forEach(log => {
                     tbody.innerHTML += `
                         <tr>
-                            <td style="font-size: 0.7rem; opacity: 0.6;">${log.time || 'N/A'}</td>
+                            <td style="opacity:0.6; font-size:0.7rem;">${log.time}</td>
                             <td style="color:var(--gold); font-weight:bold;">${log.user}</td>
                             <td>${"☕".repeat(log.rating)}</td>
-                            <td style="opacity: 0.8;">${log.comment}</td>
+                            <td>${log.comment}</td>
                         </tr>`;
                 });
+            },
+
+            logout: function() {
+                localStorage.removeItem('whc_session');
+                location.reload();
             }
         };
     </script>
