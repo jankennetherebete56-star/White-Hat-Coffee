@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>White Hat Coffee | Member Portal</title>
+    <title>White Hat Coffee FeedBack
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
@@ -26,7 +26,7 @@
         }
         .hidden { display: none !important; }
 
-        /* --- NAVIGATION & LOGO SECTION --- */
+        /* --- NAVIGATION & LOGO --- */
         header {
             background: var(--brand-green);
             padding: 30px 0;
@@ -70,10 +70,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        .nav-buttons button:hover {
-            background: var(--gold);
-            color: #000;
-        }
+        .nav-buttons button:hover { background: var(--gold); color: #000; }
 
         #user-status {
             position: absolute;
@@ -84,65 +81,77 @@
             letter-spacing: 1px;
         }
         
-        /* --- LANDING PAGE CONTENT --- */
+        /* --- SECTIONS --- */
         .hero-text { 
             text-align: center; 
             padding: 50px 0; 
             font-weight: 900; 
             font-size: 1.4rem;
-            color: var(--white);
             letter-spacing: 5px;
             text-transform: uppercase;
         }
         
         .section-container { display: flex; width: 100%; min-height: 550px; }
-        .content-box { 
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            padding: 60px; 
-            text-align: center; 
-        }
+        .content-box { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; text-align: center; }
         .image-box { flex: 1; background-size: cover; background-position: center; filter: brightness(0.6); }
         .bg-dark-green { background-color: var(--dark-green); }
+        
+        .about-text { font-size: 1.1rem; line-height: 1.8; max-width: 500px; margin-bottom: 30px; color: #e0e0e0; }
+        .social-title { font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 15px; color: var(--gold); }
+        .social-item { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; font-size: 0.85rem; opacity: 0.8; }
 
-        /* Admin Specific */
-        .admin-box { max-width: 900px; width: 95%; background: rgba(10, 77, 60, 0.98); padding: 30px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        /* --- CARDS --- */
+        .login-card, .portal-card { 
+            background: rgba(10, 77, 60, 0.95); 
+            padding: 40px; 
+            border-radius: 25px; 
+            width: 100%; 
+            max-width: 400px; 
+            text-align: center; 
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
+        .login-card input, textarea { 
+            width: 100%; padding: 15px; border: none; border-radius: 8px; 
+            background-color: var(--input-bg); margin-top: 10px; box-sizing: border-box; 
+            font-family: inherit; font-weight: 700; text-align: center; 
+        }
+        textarea { background: rgba(0,0,0,0.2); color: white; text-align: left; }
+
+        .ghost-btn, .submit-btn { 
+            background: var(--gold); border: none; color: #000; padding: 15px 40px; 
+            border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; 
+            letter-spacing: 2px; width: 100%; margin-top: 20px;
+        }
+        .submit-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        /* --- VIEW BACKGROUNDS --- */
+        #auth-view, #feedback-view, #thank-you-view, #admin-view {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover; min-height: 100vh; display: flex; justify-content: center; align-items: center;
+        }
+
+        /* --- RATING --- */
+        .rating-row { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+        .bean { font-size: 2.5rem; cursor: pointer; filter: grayscale(1); opacity: 0.3; transition: 0.3s; }
+        .bean.active { filter: grayscale(0); opacity: 1; text-shadow: 0 0 10px var(--gold); }
+
+        /* --- ADMIN DASHBOARD --- */
+        .admin-box { max-width: 950px; width: 95%; background: rgba(8, 61, 48, 0.98); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); }
         .admin-summary { display: flex; gap: 20px; margin: 20px 0; }
-        .stat-card { flex: 1; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border-left: 4px solid var(--gold); }
+        .stat-card { flex: 1; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border-left: 4px solid var(--gold); text-align: left; }
         .stat-card h4 { margin: 0; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.7; text-transform: uppercase; }
         .stat-card p { margin: 5px 0 0; font-size: 1.8rem; font-weight: 900; color: var(--gold); }
 
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th { border-bottom: 2px solid var(--gold); padding: 10px; text-align: left; color: var(--gold); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
-        td { padding: 15px 10px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
-
-        .sync-status { font-size: 0.65rem; color: var(--gold); opacity: 0.8; letter-spacing: 1px; }
-
-        /* Forms */
-        .login-card { text-align: center; width: 100%; max-width: 450px; padding: 40px; background: var(--dark-green); border-radius: 30px; }
-        .login-card input { width: 100%; padding: 15px; border-radius: 8px; border:none; margin-top: 10px; font-family: inherit; font-weight: 700; text-align: center;}
-        .ghost-btn { background: var(--gold); border: none; color: #000; padding: 15px 60px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;}
-        
-        #feedback-view, #thank-you-view, #admin-view { 
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2070');
-            background-size: cover; min-height: 100vh; display: flex; justify-content: center; align-items: center; 
-        }
-        .portal-card { background: rgba(10, 77, 60, 0.95); padding: 40px; border-radius: 25px; width: 100%; max-width: 400px; text-align: center; }
-        .rating-row { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-        .bean { font-size: 2.5rem; cursor: pointer; filter: grayscale(1); opacity: 0.3; transition: 0.3s; }
-        .bean.active { filter: grayscale(0); opacity: 1; }
-        textarea { width: 100%; padding: 15px; border-radius: 10px; background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.2); resize: none; font-family: inherit; }
-        .submit-btn { width: 100%; padding: 15px; background: var(--gold); border: none; border-radius: 10px; margin-top: 15px; font-weight: 800; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0,0,0,0.2); }
+        th { border-bottom: 2px solid var(--gold); padding: 15px; text-align: left; color: var(--gold); text-transform: uppercase; font-size: 0.75rem; }
+        td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
     </style>
 </head>
 <body onload="app.checkSession()">
 
     <div id="landing-view">
         <header>
-            <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t39.30808-6/536275766_122156552030794371_4811627826598428867_n.jpg?_nc_cat=101&_nc_cb=99be929b-ad57045b&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHKCvcTUqoeJCHG69w4RbztIz8txUqd4kIjPy3FSp3iQmmIeXvA2Dw39UzvXwxdLrwWGucQBjgtCB3g6fK1ur_3&_nc_ohc=-3MRAUQZHv8Q7kNvwGmqCBk&_nc_oc=AdlfYA1Tmv8U6voMqxMhPQllvneuVesHikXL38-smNmUSWskI1caDm7Qqn7p-EeJKTk&_nc_zt=23&_nc_ht=scontent.fmnl9-2.fna&_nc_gid=xQM-NkZFyfGNdJ3CCK6D2A&oh=00_Afmj-3DV8Fp0nPxho7WH1syLudC4sayRwTI2uvZQSw8QiQ&oe=6951530D" alt="White Hat Logo" class="main-logo">
+            <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t39.30808-6/536275766_122156552030794371_4811627826598428867_n.jpg?_nc_cat=101&oh=00_Afmj-3DV8Fp0nPxho7WH1syLudC4sayRwTI2uvZQSw8QiQ&oe=6951530D" alt="White Hat Logo" class="main-logo">
         </header>
 
         <nav>
@@ -152,12 +161,19 @@
                 <button id="nav-logout" class="hidden" onclick="app.logout()">Logout</button>
             </div>
         </nav>
+        
         <div class="hero-text">START YOUR DAY WITH WHITE HAT.</div>
+
         <div class="section-container">
             <div class="image-box" style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=1974');"></div>
             <div class="content-box bg-dark-green">
-                <h2 style="color: var(--gold); text-transform: uppercase; font-weight: 900;">About Us</h2>
-                <p style="max-width: 400px; opacity: 0.8; line-height: 1.6;">Freshly roasted and honest. We provide the fuel you need to stay sharp.</p>
+                <h2 style="color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 900;">About Us</h2>
+                <p class="about-text">Freshly roasted, honestly sourced, and built for the daily grind. We provide the fuel you need to stay sharp and own your day.</p>
+                <div class="social-footer">
+                    <div class="social-title">STAY CONNECTED</div>
+                    <div class="social-item"><i class="fab fa-facebook-f"></i> @White Hat Coffee</div>
+                    <div class="social-item"><i class="fab fa-instagram"></i> @whitehatcoffeeph</div>
+                </div>
             </div>
         </div>
     </div>
@@ -166,15 +182,15 @@
         <div class="login-card">
             <h1>MEMBER ACCESS</h1>
             <input type="text" id="authName" placeholder="Enter your name...">
-            <div style="margin-top: 20px;">
-                <button class="ghost-btn" onclick="app.signUp()">ENTER</button>
-            </div>
+            <button class="ghost-btn" onclick="app.signUp()">ENTER PORTAL</button>
+            <p style="font-size: 0.7rem; margin-top: 25px; opacity: 0.5; cursor: pointer;" onclick="showView('landing-view')">← BACK TO HOME</p>
         </div>
     </div>
 
     <div id="feedback-view" class="hidden">
         <div class="portal-card">
-            <h2 id="welcome-user" style="color: var(--gold);"></h2>
+            <h2 id="welcome-user" style="color: var(--gold); margin-bottom: 5px;"></h2>
+            <p style="opacity: 0.6; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">Share your experience</p>
             <div class="rating-row">
                 <span class="bean" onclick="app.setRating(1)">☕</span>
                 <span class="bean" onclick="app.setRating(2)">☕</span>
@@ -182,43 +198,43 @@
                 <span class="bean" onclick="app.setRating(4)">☕</span>
                 <span class="bean" onclick="app.setRating(5)">☕</span>
             </div>
-            <textarea id="userComment" rows="4" placeholder="Your feedback..." oninput="app.validate()"></textarea>
-            <button class="submit-btn" id="submitBtn" onclick="app.submitFeedback()" disabled>SUBMIT</button>
+            <textarea id="userComment" rows="4" placeholder="How was your coffee today?" oninput="app.validate()"></textarea>
+            <button class="submit-btn" id="submitBtn" onclick="app.submitFeedback()" disabled>SUBMIT FEEDBACK</button>
         </div>
     </div>
 
     <div id="thank-you-view" class="hidden">
         <div class="portal-card">
-            <h2 style="color: var(--gold);">THANK YOU!</h2>
-            <p id="thanks-name"></p>
-            <button class="submit-btn" onclick="app.logout()">CLOSE</button>
+            <div style="font-size: 4rem; color: var(--gold); margin-bottom: 10px;">✓</div>
+            <h2 style="letter-spacing: 2px;">SUCCESS</h2>
+            <p id="thanks-name" style="color: var(--gold); font-weight: bold; margin: 15px 0;"></p>
+            <button class="submit-btn" style="background: transparent; border: 1px solid var(--gold); color: var(--gold);" onclick="app.logout()">CLOSE SESSION</button>
         </div>
     </div>
 
     <div id="admin-view" class="hidden">
         <div class="admin-box">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--gold); padding-bottom: 15px;">
-                <h2 style="color: var(--gold); margin:0;">EXECUTIVE DASHBOARD</h2>
-                <div id="admin-sync-indicator" class="sync-status">SYNCING...</div>
-                <button class="ghost-btn" style="padding: 8px 20px; font-size: 0.7rem;" onclick="app.logout()">LOGOUT</button>
+                <h2 style="color: var(--gold); margin:0; letter-spacing: 3px;">EXECUTIVE DASHBOARD</h2>
+                <button class="nav-buttons" style="background:none; border:none; color:white; cursor:pointer;" onclick="app.logout()">LOGOUT</button>
             </div>
 
             <div class="admin-summary">
                 <div class="stat-card">
-                    <h4>Total Logs</h4>
+                    <h4>Total Feedbacks</h4>
                     <p id="stat-total-logs">0</p>
                 </div>
                 <div class="stat-card">
-                    <h4>Avg. Rating</h4>
+                    <h4>Avg. Satisfaction</h4>
                     <p id="stat-avg-rating">0.0</p>
                 </div>
             </div>
 
-            <div style="max-height: 400px; overflow-y: auto;">
+            <div style="max-height: 450px; overflow-y: auto; border-radius: 10px;">
                 <table>
                     <thead>
                         <tr>
-                            <th>Date / Time</th>
+                            <th>Time</th>
                             <th>Member</th>
                             <th>Rating</th>
                             <th>Comment</th>
@@ -231,19 +247,18 @@
     </div>
 
     <script>
-        // GOOGLE SCRIPT CONFIG
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwPpmL4EXmSe7ZoEepRNHaASEXXr38YLSFyM2ku6sK0t3fo4s1aWi68mTuS13fz-l8/exec";
 
         function showView(viewId) {
             document.querySelectorAll('body > div').forEach(div => div.classList.add('hidden'));
             document.getElementById(viewId).classList.remove('hidden');
+            window.scrollTo(0,0);
         }
 
         const app = {
             rating: 0,
             currentUser: localStorage.getItem('whc_session') || "",
-            feedbacks: [],
-
+            
             checkSession: function() {
                 if(this.currentUser) {
                     if(this.currentUser === 'GwynWhiteHatAdmin') {
@@ -261,8 +276,11 @@
                 if(!name) return alert("Please enter your name.");
                 this.currentUser = name;
                 localStorage.setItem('whc_session', name);
-                this.checkSession();
-                if(name !== 'GwynWhiteHatAdmin') {
+                
+                if(name === 'GwynWhiteHatAdmin') {
+                    this.showAdmin();
+                } else {
+                    this.checkSession();
                     document.getElementById('welcome-user').innerText = "Hello, " + name;
                     showView('feedback-view');
                 }
@@ -281,71 +299,60 @@
 
             submitFeedback: async function() {
                 const btn = document.getElementById('submitBtn');
-                btn.disabled = true;
                 btn.innerText = "SENDING...";
+                btn.disabled = true;
 
-                const now = new Date();
                 const log = {
-                    time: now.toLocaleDateString() + ' ' + now.toLocaleTimeString(),
+                    time: new Date().toLocaleString(),
                     user: this.currentUser,
                     rating: this.rating,
                     comment: document.getElementById('userComment').value.trim()
                 };
 
                 try {
-                    // Send to Google Sheets
                     await fetch(SCRIPT_URL, {
                         method: 'POST',
-                        mode: 'no-cors', // Essential for Google Apps Script
+                        mode: 'no-cors',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(log)
                     });
-
                     document.getElementById('thanks-name').innerText = "CHEERS, " + this.currentUser;
                     showView('thank-you-view');
                 } catch (e) {
-                    alert("Error saving feedback. Please try again.");
+                    alert("Sync Error. Please try again.");
+                    btn.innerText = "SUBMIT FEEDBACK";
                     btn.disabled = false;
-                    btn.innerText = "SUBMIT";
                 }
             },
 
             showAdmin: async function() {
                 showView('admin-view');
                 const tbody = document.getElementById('admin-table-body');
-                const indicator = document.getElementById('admin-sync-indicator');
-                
-                indicator.innerText = "SYNCING LIVE DATA...";
+                tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; padding:40px;'>Syncing Live Data...</td></tr>";
 
                 try {
-                    // Fetch from Google Sheets
-                    const response = await fetch(SCRIPT_URL);
-                    const data = await response.json();
-                    this.feedbacks = data; // Assuming the script returns an array of objects
+                    const res = await fetch(SCRIPT_URL);
+                    const data = await res.json();
+                    
+                    const total = data.length;
+                    const avg = total > 0 ? (data.reduce((a, b) => a + b.rating, 0) / total).toFixed(1) : "0.0";
+
+                    document.getElementById('stat-total-logs').innerText = total;
+                    document.getElementById('stat-avg-rating').innerText = avg + " ☕";
+
+                    tbody.innerHTML = "";
+                    [...data].reverse().forEach(row => {
+                        tbody.innerHTML += `
+                            <tr>
+                                <td style="opacity:0.6; font-size:0.7rem;">${row.time}</td>
+                                <td style="color:var(--gold); font-weight:bold;">${row.user}</td>
+                                <td>${"☕".repeat(row.rating)}</td>
+                                <td>${row.comment}</td>
+                            </tr>`;
+                    });
                 } catch (e) {
-                    console.log("Cloud fetch failed, showing local fallback if any.");
-                    indicator.innerText = "OFFLINE MODE";
+                    tbody.innerHTML = "<tr><td colspan='4' style='text-align:center;'>Error loading data.</td></tr>";
                 }
-
-                // Calculate Stats
-                const total = this.feedbacks.length;
-                const avg = total > 0 ? (this.feedbacks.reduce((a, b) => a + b.rating, 0) / total).toFixed(1) : "0.0";
-                
-                document.getElementById('stat-total-logs').innerText = total;
-                document.getElementById('stat-avg-rating').innerText = avg + " ☕";
-                indicator.innerText = "LIVE SYNCED";
-
-                // Render Table
-                tbody.innerHTML = total ? "" : "<tr><td colspan='4' style='text-align:center; padding:20px;'>No data found.</td></tr>";
-                [...this.feedbacks].reverse().forEach(log => {
-                    tbody.innerHTML += `
-                        <tr>
-                            <td style="opacity:0.6; font-size:0.7rem;">${log.time}</td>
-                            <td style="color:var(--gold); font-weight:bold;">${log.user}</td>
-                            <td>${"☕".repeat(log.rating)}</td>
-                            <td>${log.comment}</td>
-                        </tr>`;
-                });
             },
 
             logout: function() {
