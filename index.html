@@ -314,10 +314,11 @@
 
                 const now = new Date();
                 const log = {
-                    date: now.toLocaleDateString(),
-                    time: now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                    // Force a consistent date format so all devices match
+                    date: now.getFullYear() + '-' + (now.getMonth() + 1).toString().padStart(2, '0') + '-' + now.getDate().toString().padStart(2, '0'),
+                    time: now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true}),
                     user: this.currentUser,
-                    rating: this.rating,
+                    rating: Number(this.rating), // Ensure rating is a Number
                     comment: document.getElementById('userComment').value.trim()
                 };
 
@@ -343,15 +344,15 @@
                 tbody.innerHTML = "<tr><td colspan='5' style='text-align:center; padding:40px;'>Syncing Live Data...</td></tr>";
 
                 try {
-                    const res = await fetch(SCRIPT_URL);
+                    // Added Cache Buster (?t=...) to ensure other devices see the LATEST data immediately
+                    const res = await fetch(SCRIPT_URL + "?t=" + Date.now());
                     const data = await res.json();
                     
                     const total = data.length;
 
-                    // --- FIXED AVERAGE CALCULATION ---
-                    // We use Number() to ensure ratings aren't treated as text, 
-                    // and start the sum at 0 to avoid errors.
-                    const avg = total > 0 ? (data.reduce((acc, item) => acc + Number(item.rating), 0) / total).toFixed(1) : "0.0";
+                    // UPDATED CALCULATION: Forces every rating to be a float to prevent string errors
+                    const sum = data.reduce((acc, item) => acc + (parseFloat(item.rating) || 0), 0);
+                    const avg = total > 0 ? (sum / total).toFixed(1) : "0.0";
 
                     document.getElementById('stat-total-logs').innerText = total;
                     document.getElementById('stat-avg-rating').innerText = avg + " ☕";
@@ -366,7 +367,7 @@
                                     <td style="font-size:0.75rem; opacity:0.8;">${row.date}</td>
                                     <td style="font-size:0.75rem; opacity:0.6;">${row.time}</td>
                                     <td style="color:var(--gold); font-weight:bold;">${row.user}</td>
-                                    <td>${"☕".repeat(row.rating)}</td>
+                                    <td>${"☕".repeat(parseInt(row.rating) || 0)}</td>
                                     <td style="opacity:0.9;">${row.comment}</td>
                                 </tr>`;
                         });
